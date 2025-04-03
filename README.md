@@ -3,7 +3,7 @@
 ### Front-End
 
 ### Back-End
-Java 21
+Kotlin 2.21  
 SpringBoot (Framework)
 
 ### In-memory DB
