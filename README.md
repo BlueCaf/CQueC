@@ -3,7 +3,7 @@
 ### Front-End
 
 ### Back-End
-Kotlin 2.21  
+Java 21
 SpringBoot (Framework)
 
 ### In-memory DB
@@ -12,11 +12,11 @@ Redis (Clustering/Sharding)
 - Queueing
 
 ### Monitoring
-GoLang  
+GoLang
 Promethus (Exporter)
 
 ### CI/CD
-Jenkins  
+Jenkins
 GitHub Action
 
 ### MSA
