@@ -1,2 +1,3 @@
 ## TODO
-🎉 Create Servers
+🎉 Create servers (WAS, DB)
+- ✅ Jenkins server setting (WAS)
