@@ -2,6 +2,7 @@ package com.bluecaf.cquec.controller
 
 import com.bluecaf.cquec.service.CookieService
 import com.bluecaf.cquec.service.RedisService
+import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
@@ -24,7 +25,12 @@ class QueController(
     }
 
     @GetMapping("/test2")
-    fun getRedis(): String {
+    fun getCookieFromRedis(): String {
         return redisService.getValue("1").toString()
+    }
+
+    @GetMapping("/test3")
+    fun getCookieFromClient(request: HttpServletRequest): String {
+        return cookieService.find(request)
     }
 }
