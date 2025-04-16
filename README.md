@@ -1,4 +1,4 @@
-# QQueueing
+# cQuec
 ## Tech-Stack
 ### Front-End
 
