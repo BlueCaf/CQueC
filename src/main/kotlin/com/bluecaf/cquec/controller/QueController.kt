@@ -2,6 +2,7 @@ package com.bluecaf.cquec.controller
 
 import com.bluecaf.cquec.service.CookieService
 import com.bluecaf.cquec.service.RedisService
+import com.bluecaf.cquec.util.CryptoUtil
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.web.bind.annotation.GetMapping
@@ -15,7 +16,7 @@ class QueController(
     @GetMapping("/test1")
     fun queueing(response: HttpServletResponse): String {
         val id = cookieService.generateUUIDv7()
-        val cookie = cookieService.create(id)
+        val cookie = cookieService.create(CryptoUtil.encryptWithHmac(id))
 
         redisService.setValue("1", id)
         // 응답에 쿠키 추가
@@ -32,5 +33,10 @@ class QueController(
     @GetMapping("/test3")
     fun getCookieFromClient(request: HttpServletRequest): String {
         return cookieService.find(request)
+    }
+    
+    @GetMapping("/test4")
+    fun test33(request: HttpServletRequest): String? {
+        return CryptoUtil.decryptWithHmacCheck(cookieService.find(request))
     }
 }

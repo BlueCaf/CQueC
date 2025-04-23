@@ -24,8 +24,7 @@ class CookieService {
 
     fun find(request: HttpServletRequest): String {
         val cookies = request.cookies ?: return "쿠키가 없습니다."
-
-        val userIdCookie = cookies.firstOrNull { it.name == "id" }
+        val userIdCookie = cookies.firstOrNull { it.name == "cquecId" }
 
         return userIdCookie?.value ?: "id 쿠키가 없습니다."
     }
