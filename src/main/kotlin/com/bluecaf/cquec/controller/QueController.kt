@@ -2,7 +2,6 @@ package com.bluecaf.cquec.controller
 
 import com.bluecaf.cquec.service.CookieService
 import com.bluecaf.cquec.service.RedisService
-import com.bluecaf.cquec.util.Crypto
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.web.bind.annotation.GetMapping
