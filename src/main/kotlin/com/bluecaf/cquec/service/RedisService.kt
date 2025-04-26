@@ -11,7 +11,8 @@ class RedisService(
         stringRedisTemplate.opsForValue().set(key, value)
     }
 
-    fun getValue(key: String): String? {
+    fun getValue(key: String?): String? {
+        if (key.isNullOrBlank()) return null
         return stringRedisTemplate.opsForValue().get(key)
     }
 }

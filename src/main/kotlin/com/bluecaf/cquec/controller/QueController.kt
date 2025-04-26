@@ -15,9 +15,9 @@ class QueController(
     @GetMapping("/que-enter")
     fun enter(response: HttpServletResponse, request: HttpServletRequest): String {
         var responseString = "already"
-        val clientCookie = cookieService.find(request)
+        val clientCookie = cookieService.find(request) ?: ""
 
-        if (redisService.getValue(clientCookie).toString() == "null") {
+        if (redisService.getValue(clientCookie) == null) {
             val id = cookieService.generateUUIDv7()
             val cookie = cookieService.create(id)
             redisService.setValue(id, "1")
@@ -28,19 +28,4 @@ class QueController(
 
         return responseString
     }
-
-//    @GetMapping("/test2")
-//    fun getCookieFromRedis(): String {
-//        return redisService.getValue("1").toString()
-//    }
-//
-//    @GetMapping("/test3")
-//    fun getCookieFromClient(request: HttpServletRequest): String {
-//        return cookieService.find(request)
-//    }
-//
-//    @GetMapping("/test4")
-//    fun test33(request: HttpServletRequest): String? {
-//        return cookieService.find(request)
-//    }
 }

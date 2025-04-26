@@ -19,11 +19,11 @@ class CookieService {
         return cookie
     }
 
-    fun find(request: HttpServletRequest): String {
-        val cookies = request.cookies ?: return "null"
-        val userIdCookie = cookies.firstOrNull { it.name == "cquecId" }
-
-        return Crypto.decryptWithHmacCheck(userIdCookie?.value ?: "null")
+    fun find(request: HttpServletRequest): String? {
+        return runCatching {
+            val userIdCookie = request.cookies?.firstOrNull { it.name == "cquecId" } ?: return null
+            Crypto.decryptWithHmacCheck(userIdCookie.value)
+        }.getOrNull()
     }
 
     fun generateUUIDv7(): String {

@@ -25,16 +25,16 @@ object Crypto {
         return "$base64Encrypted::$base64Hmac"
     }
 
-    fun decryptWithHmacCheck(encryptedInput: String): String {
+    fun decryptWithHmacCheck(encryptedInput: String): String? {
         val parts = encryptedInput.split("::")
-        if (parts.size != 2) return "null"
+        if (parts.size != 2) return null
         val (encryptedData, receivedHmac) = parts
 
         val mac = Mac.getInstance("HmacSHA256")
         mac.init(SecretKeySpec(HMAC_KEY.toByteArray(), "HmacSHA256"))
         val expectedHmac = Base64.getEncoder().encodeToString(mac.doFinal(encryptedData.toByteArray()))
 
-        if (expectedHmac != receivedHmac) return "null"  // 변조됨
+        if (expectedHmac != receivedHmac) return null  // 변조됨
 
         val cipher = Cipher.getInstance(AES_TRANSFORMATION)
         val keySpec = SecretKeySpec(AES_KEY.toByteArray(), "AES")
