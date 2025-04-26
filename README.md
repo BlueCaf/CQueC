@@ -1,19 +1,18 @@
 # cQuec
 ## Tech-Stack
-### Front-End
-
 ### Back-End
 Kotlin 2.21  
 SpringBoot (Framework)
 
 ### In-memory DB
 Redis (Clustering/Sharding)
-- Already
-- Queueing
+- Processed (SETS)
+- Queueing (Sorted SET a.k.a ZSET)
 
 ### Monitoring
 GoLang
-Promethus (Exporter)
+Promethus
+Grafana
 
 ### CI/CD
 Jenkins
@@ -21,3 +20,6 @@ GitHub Action
 
 ### MSA
 Kubernetes
+
+### Benchmark
+nGrinder
