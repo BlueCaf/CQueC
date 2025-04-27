@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>대기열 접속 중...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 80px;
+            background-color: #f5f7fa;
+        }
+        h1 {
+            font-size: 32px;
+            color: #2c3e50;
+        }
+        .info {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #34495e;
+        }
+        #spinner {
+            margin-top: 40px;
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+            display: inline-block;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #progress-container {
+            width: 80%;
+            background-color: #ddd;
+            margin: 30px auto 0;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 30px;
+        }
+        #progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: #3498db;
+            color: white;
+            line-height: 30px;
+            transition: width 1s ease;
+        }
+    </style>
+</head>
+<body>
+<h1>대기열 접속 중입니다...</h1>
+
+<div id="queue-info" class="info" style="display:none;">
+    현재 대기 순번: <span id="position">-</span>명<br>
+    예상 대기 시간: <span id="eta">-</span>
+</div>
+
+<div id="spinner"></div>
+
+<div id="progress-container" style="display:none;">
+    <div id="progress-bar">0%</div>
+</div>
+
+<script>
+    let estimatedProcessingTimePerPerson = 5; // 한 명당 5초
+    let originalPosition = null; // 대기열 진입 시 내 처음 순번
+    let currentPosition = null;
+    let countdownTimer = null;
+
+    async function checkQueueStatus() {
+        try {
+            const response = await fetch('/que-enter', {
+                method: 'GET',
+                credentials: 'include',
+            });
+
+            if (!response.ok) {
+                console.error('서버 오류 발생');
+                return;
+            }
+
+            const data = await response.json();
+
+            if (data.code === 2002) { // waiting
+                const position = data.data || 0;
+
+                document.getElementById('queue-info').style.display = 'block';
+                document.getElementById('progress-container').style.display = 'block';
+                document.getElementById('spinner').style.display = 'none'; // 로딩 스피너는 감춤
+
+                if (originalPosition === null) {
+                    originalPosition = position; // 최초 진입 순번 기억
+                }
+                currentPosition = position;
+                updateUI();
+            }
+            else if (data.code === 2003 || data.code === 2004) {
+                clearInterval(countdownTimer);
+                setTimeout(() => {
+                    window.location.href = '/enter.html';
+                }, 1000);
+            }
+        } catch (error) {
+            console.error('요청 실패', error);
+        }
+    }
+
+    function updateUI() {
+        document.getElementById('position').innerText = currentPosition;
+
+        const elapsedPosition = originalPosition - currentPosition;
+        const totalPosition = originalPosition || 1; // 0으로 나누는거 방지
+        const progressPercent = Math.min(100, (elapsedPosition / totalPosition) * 100);
+
+        document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+        document.getElementById('progress-bar').innerText = `${Math.floor(progressPercent)}%`;
+
+        const remainingSeconds = currentPosition * estimatedProcessingTimePerPerson;
+        document.getElementById('eta').innerText = formatSeconds(remainingSeconds);
+
+        // Progress bar 색상 변경 (ETA 1분 이하이면 빨간색)
+        if (remainingSeconds <= 60) {
+            document.getElementById('progress-bar').style.backgroundColor = '#e74c3c';
+        } else {
+            document.getElementById('progress-bar').style.backgroundColor = '#3498db';
+        }
+    }
+
+    function formatSeconds(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remaining = seconds % 60;
+        return `${minutes}분 ${remaining}초`;
+    }
+
+    // 최초 실행
+    checkQueueStatus();
+    // 5초마다 상태 체크
+    countdownTimer = setInterval(checkQueueStatus, 5000);
+</script>
+</body>
+</html>

@@ -48,4 +48,13 @@ class QueController(
     fun resetRedis() {
         redisService.clearAllKeys()
     }
+
+    @GetMapping("/que-wait-test")
+    fun waitTest() {
+
+        repeat(50) {
+            val id = cookieService.generateUUIDv7()
+            redisService.enqueue(id)
+        }
+    }
 }
