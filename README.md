@@ -3,8 +3,9 @@
 ### Front-End
 
 ### Back-End
-Kotlin 2.21  
-SpringBoot (Framework)
+Kotlin 2.0.0  
+SpringBoot 3.4.4 (Framework)
+JDK 21
 
 ### In-memory DB
 Redis (Clustering/Sharding)

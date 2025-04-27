@@ -1,5 +1,6 @@
 package com.bluecaf.cquec.controller
 
+import com.bluecaf.cquec.dto.QueResponseDTO
 import com.bluecaf.cquec.service.CookieService
 import com.bluecaf.cquec.service.RedisService
 import jakarta.servlet.http.HttpServletRequest
@@ -13,19 +14,28 @@ class QueController(
     private val redisService: RedisService
 ) {
     @GetMapping("/que-enter")
-    fun enter(response: HttpServletResponse, request: HttpServletRequest): String {
-        var responseString = "already"
-        val clientCookie = cookieService.find(request) ?: ""
+    fun enter(response: HttpServletResponse, request: HttpServletRequest): QueResponseDTO {
+        val clientCookie = cookieService.find(request)
 
-        if (redisService.getValue(clientCookie) == null) {
-            val id = cookieService.generateUUIDv7()
-            val cookie = cookieService.create(id)
-            redisService.setValue(id, "1")
-            // 응답에 쿠키 추가
-            response.addCookie(cookie)
-            responseString = "created"
+        if (clientCookie != null) {
+            val waitingPosition = redisService.getWaitingPosition(clientCookie)
+            if (waitingPosition != null) {
+                return QueResponseDTO(2002, "waiting", waitingPosition)
+            }
+            if (redisService.isProcessed(clientCookie)) {
+                return QueResponseDTO(2003, "processed", null)
+            }
         }
 
-        return responseString
+        val id = cookieService.generateUUIDv7()
+        val cookie = cookieService.create(id)
+        redisService.enqueue(id)
+        response.addCookie(cookie)
+        return QueResponseDTO(2001, "created", null)
+    }
+
+    @GetMapping("/reset-redis")
+    fun resetRedis() {
+        redisService.clearAllKeys()
     }
 }
