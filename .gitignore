@@ -1,4 +1,9 @@
-.gradle
-.idea
-build
+# Gradle
+.gradle/
+build/
+
+# IntelliJ
+.idea/
+
+# application 설정파일
 src/main/resources/application.properties
