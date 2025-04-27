@@ -17,22 +17,18 @@ class RedisService(
         return stringRedisTemplate.opsForZSet().rank("queue:waiting:zset", userId)
     }
 
-    // 이미 처리했는지 확인
     fun isProcessed(userId: String): Boolean {
         return stringRedisTemplate.hasKey("queue:processed:$userId") == true
     }
 
-    // 대기열 수 확인
     fun getQueueSize(): Long {
         return stringRedisTemplate.opsForZSet().zCard("queue:waiting:zset") ?: 0L
     }
 
-    // 처리 완료
     fun markAsProcessed(id: String) {
         stringRedisTemplate.opsForValue().set("queue:processed:$id", "1", Duration.ofMinutes(30))
     }
 
-    // 초기화
     fun clearAllKeys() {
         stringRedisTemplate.execute { it.serverCommands().flushDb() }
     }
