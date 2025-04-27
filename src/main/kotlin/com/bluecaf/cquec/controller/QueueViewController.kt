@@ -8,11 +8,11 @@ class QueueViewController {
 
     @GetMapping("/queue")
     fun showQueuePage(): String {
-        return "queue"
+        return "forward:/queue.html"
     }
 
     @GetMapping("/enter")
     fun showEnterPage(): String {
-        return "enter"
+        return "forward:/enter.html"
     }
 }
