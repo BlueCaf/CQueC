@@ -13,6 +13,4 @@ else
 	sleep 5
 fi
 
-echo `which java`
-echo `java --version`
 nohup java -jar $JAR_PATH/$JAR_NAME > nohup.out 2>&1 &
