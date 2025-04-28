@@ -14,7 +14,7 @@ class CookieService {
         val cookie = Cookie("cquecId", Crypto.encryptWithHmac(id))
         //cookie.maxAge = 60 * 30 // 쿠키 유효시간 30분
         cookie.isHttpOnly = true // 클라이언트 측 자바스크립트에서 쿠키에 접근하지 못하게 설정
-        cookie.secure = true // HTTPS 연결에서만 쿠키를 사용하도록 설정
+        cookie.secure = false // HTTPS 연결에서만 쿠키를 사용하도록 설정
 
         return cookie
     }
