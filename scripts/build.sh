@@ -14,3 +14,4 @@ else
 fi
 
 nohup java -jar $JAR_PATH/$JAR_NAME > nohup.out 2>&1 &
+disown
