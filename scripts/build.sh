@@ -2,7 +2,7 @@
 JAR_PATH=./build/libs
 JAR_NAME=cquec-0.0.1-SNAPSHOT.jar
 
-cd $JAR_PATH
+#cd $JAR_PATH
 JAVA_PID=$(pgrep -f ${JAR_NAME})
 
 if [ -z $JAVA_PID ]; then
