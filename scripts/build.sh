@@ -1,5 +1,5 @@
 #!/bin/bash
-JAR_PATH=./build/libs/
+JAR_PATH=./build/libs
 JAR_NAME=cquec-0.0.1-SNAPSHOT.jar
 
 cd $JAR_PATH
@@ -15,3 +15,4 @@ fi
 
 sudo nohup java -jar $JAR_PATH/$JAR_NAME > nohup.out 2>&1 &
 echo $JAR_PATH/$JAR_NAME
+echo `pwd`
