@@ -13,4 +13,4 @@ else
 	sleep 5
 fi
 
-java -jar $JAR_PATH/$JAR_NAME > nohup.out
+nohup java -jar $JAR_PATH/$JAR_NAME > nohup.out 2>&1
