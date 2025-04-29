@@ -25,11 +25,23 @@ class RedisService(
         return stringRedisTemplate.opsForZSet().zCard("queue:waiting:zset") ?: 0L
     }
 
-    fun markAsProcessed(id: String) {
-        stringRedisTemplate.opsForValue().set("queue:processed:$id", "1", Duration.ofMinutes(30))
+    fun markAsProcessed(userId: String) {
+        stringRedisTemplate.opsForValue().set("queue:processed:$userId", "1", Duration.ofMinutes(30))
     }
 
     fun clearAllKeys() {
         stringRedisTemplate.execute { it.serverCommands().flushDb() }
+    }
+
+    fun incrementProcessed() {
+        stringRedisTemplate.opsForValue().increment("queue:processed:count")
+    }
+
+    fun getProcessedCount(): Long {
+        return stringRedisTemplate.opsForValue().get("queue:processed:count")?.toLong() ?: 0
+    }
+
+    fun resetProcessedCount() {
+        stringRedisTemplate.delete("queue:processed:count")
     }
 }

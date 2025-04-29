@@ -28,11 +28,13 @@ class QueController(
         }
 
         val queueSize = redisService.getQueueSize()
-        if (queueSize == 0L) {
+        val processedCount = redisService.getProcessedCount()
+        if (queueSize == 0L && processedCount == 0L) {
             // 대기열 비어있으면 바로 처리
             val id = cookieService.generateUUIDv7()
             val cookie = cookieService.create(id)
             redisService.markAsProcessed(id)
+            redisService.incrementProcessed()
             response.addCookie(cookie)
             return QueResponseDTO(2004, "entered", null)
         }
@@ -40,6 +42,7 @@ class QueController(
         val id = cookieService.generateUUIDv7()
         val cookie = cookieService.create(id)
         redisService.enqueue(id)
+        redisService.resetProcessedCount()
         response.addCookie(cookie)
         return QueResponseDTO(2001, "created", null)
     }
