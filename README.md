@@ -22,7 +22,7 @@
 - **Runtime**: JDK 21
 
 **이미지 예시:**
-> ![Backend Architecture](<백엔드 아키텍처 이미지 링크>)
+> ![Application Flowchart](https://github.com/BlueCaf/CQueC/blob/main/images/Application_flowchart.png?raw=true)
 
 ---
 
