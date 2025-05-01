@@ -59,7 +59,7 @@
 
 - **Kubernetes (예정)** : 대기열 서비스 Pod 배포 및 관리 (이미지 배포 예정)
 - **Auto Scaling** : 트래픽 폭주 대응
-- **Prometheus + Grafana** : 자원 모니터링링
+- **Prometheus + Grafana** : 자원 모니터링
 
 > ![Cloud Architecture Base](https://github.com/BlueCaf/CQueC/blob/main/images/Cloud_Architecture_Base.png?raw=true)
 
