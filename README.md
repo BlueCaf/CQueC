@@ -4,17 +4,34 @@
 
 > 대규모 사용자 대기열 처리를 위한 고성능 Queueing 서비스
 
-[![Kotlin](https://img.shields.io/badge/Kotlin-2.0.0-blueviolet)](https://kotlinlang.org/)
-[![SpringBoot](https://img.shields.io/badge/SpringBoot-3.4.4-brightgreen)](https://spring.io/projects/spring-boot)
-[![Redis](https://img.shields.io/badge/Redis-Cluster%2FSharding-red)](https://redis.io/)
-[![Kubernetes](https://img.shields.io/badge/Kubernetes-MSA-blue)](https://kubernetes.io/)
-[![Prometheus](https://img.shields.io/badge/Prometheus-Monitoring-orange)](https://prometheus.io/)
-[![Grafana](https://img.shields.io/badge/Grafana-Visualization-yellow)](https://grafana.com/)
+[![GitHub](https://skillicons.dev/icons?i=github&theme=dark)](https://github.com/)
+[![InteliJ IDEA](https://skillicons.dev/icons?i=idea&theme=dark)](https://www.jetbrains.com/ko-kr/idea/)
+[![VSCode](https://skillicons.dev/icons?i=vscode&theme=dark)](https://code.visualstudio.com)
+[![Kotlin](https://skillicons.dev/icons?i=kotlin&theme=dark)](https://kotlinlang.org/)
+[![SpringBoot](https://skillicons.dev/icons?i=spring&theme=dark)](https://spring.io/projects/spring-boot)
+[![GoLang](https://skillicons.dev/icons?i=golang&theme=dark)](https://golang.org/)
+![Linux](https://skillicons.dev/icons?i=linux&theme=dark)
+[![Kubernetes](https://skillicons.dev/icons?i=kubernetes&theme=dark)](https://kubernetes.io/)
+[![Jenkins](https://skillicons.dev/icons?i=jenkins&theme=dark)](https://www.jenkins.io/)
+[![Redis](https://skillicons.dev/icons?i=redis&theme=dark)](https://redis.io/)
+[![Prometheus](https://skillicons.dev/icons?i=prometheus&theme=dark)](https://prometheus.io/)
+[![Grafana](https://skillicons.dev/icons?i=grafana&theme=dark)](https://grafana.com/)
 
 ---
 
 ## 🧙 Service Image
 > ![Service Image](https://github.com/BlueCaf/CQueC/blob/main/images/CQueC_action.gif?raw=true)
+
+---
+
+## 👥 Contributors
+
+| 이름 | 역할 |
+|-----|------|
+| [Cloud](https://github.com/jeonghunbak) | 백엔드 개발 |
+| [Chance](https://github.com/ahs0432) | 인프라 및 모니터링 구축 |
+
+---
 
 ## 📚 Tech Stack
 ### 🚀 Back-End
@@ -59,15 +76,6 @@
 
 - **nGrinder** : 부하 테스트 진행
     - 10만 사용자 동시 접속 시 대기열 처리 성능 검증
-    
----
-
-## 👥 Contributors
-
-| 이름 | 역할 |
-|-----|------|
-| [Cloud](https://github.com/jeonghunbak) | 백엔드 개발 |
-| [Chance](https://github.com/ahs0432) | 인프라 및 모니터링 구축 |
 
 ---
 
