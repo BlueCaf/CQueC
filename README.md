@@ -132,7 +132,7 @@
 
 ---
 
-### 📊 결과 요약 그래프 (추후 삽입)
+### 📊 결과 요약 그래프
 
 > **TPS (Transactions Per Second)** 
 > ![nGrinder TPS](https://github.com/BlueCaf/CQueC/blob/main/images/nGrinder_TPS.png?raw=true)
