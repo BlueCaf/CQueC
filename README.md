@@ -39,9 +39,6 @@
 
 - **Processed (SET)** : 이미 입장 완료한 사용자 기록
 - **Queueing (Sorted SET - ZSET)** : 대기열 관리 (순번, ETA 계산)
-- **Monitoring (모니터링)** :
-    - **Prometheus + Grafana** 대기열 상태 모니터링
-    - 대기 시간, 진입률, 입장률 실시간 시각화
 
 **이미지 예시:**
 > ![Monitoring Dashboard](<프로메테우스-그래파나 대시보드 이미지 링크>)
@@ -51,20 +48,20 @@
 ### ⚙️ CI/CD
 
 - **Jenkins** : Build / Deploy 자동화
-- **GitHub Actions** : PR, Merge 시 자동 Build & Test
+- **GitHub Webhooks** : `main` Branch 감지 후 자동 배포
 
 **이미지 예시:**
 > ![CI/CD Pipeline](<젠킨스 or GitHub Actions 파이프라인 이미지 링크>)
 
 ---
 
-### 🧩 MSA (MicroService Architecture)
+### 🧩 Infrastructure
 
-- **Kubernetes** : 대기열 서비스 Pod 배포 및 관리
+- **Kubernetes (예정)** : 대기열 서비스 Pod 배포 및 관리 (이미지 배포 예정)
 - **Auto Scaling** : 트래픽 폭주 대응
+- **Prometheus + Grafana** : 자원 모니터링링
 
-**이미지 예시:**
-> ![Kubernetes Pods Architecture](<쿠버네티스 아키텍처 이미지 링크>)
+> ![Cloud Architecture Base](images/Cloud Architecture_Base.png)
 
 ---
 
