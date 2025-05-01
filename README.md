@@ -128,6 +128,9 @@
 > **Comment**  
 > `Redis`의 `Single Thread`로 동작하는 특성에 따라 `CPU` 개수가 적은 사양 선택   
 > 또한, `Redis` 상 저장하는 데이터도 최소화하여 `Memory`도 낮은 사양을 선택
+> - 사용자 당 최대 UUID v7 + Unix Timestamp까지 50 Byte로 예상되며,  
+>   100만 명 기준으로 사용자 인원 추산 시 최대 50 MByte 이하로 예상
+
 
 ### 🛠 테스트 도구
 
