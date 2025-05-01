@@ -50,8 +50,7 @@
 - **Jenkins** : Build / Deploy 자동화
 - **GitHub Webhooks** : `main` Branch 감지 후 자동 배포
 
-**이미지 예시:**
-> ![CI/CD Pipeline](<젠킨스 or GitHub Actions 파이프라인 이미지 링크>)
+> ![CI/CD Pipeline](https://github.com/BlueCaf/CQueC/blob/main/images/CICD_Pipeline.png?raw=true)
 
 ---
 
