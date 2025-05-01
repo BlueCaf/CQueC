@@ -36,12 +36,8 @@
 ---
 
 ### 🛡️ Queue Management
-
 - **Processed (SET)** : 이미 입장 완료한 사용자 기록
 - **Queueing (Sorted SET - ZSET)** : 대기열 관리 (순번, ETA 계산)
-
-**이미지 예시:**
-> ![Monitoring Dashboard](<프로메테우스-그래파나 대시보드 이미지 링크>)
 
 ---
 
@@ -68,10 +64,7 @@
 
 - **nGrinder** : 부하 테스트 진행
     - 10만 사용자 동시 접속 시 대기열 처리 성능 검증
-
-**이미지 예시:**
-> ![nGrinder Test Result](<nGrinder 테스트 결과 그래프 링크>)
-
+    
 ---
 
 ## 👥 Contributors
@@ -141,7 +134,20 @@
 
 ### 📊 결과 요약 그래프 (추후 삽입)
 
-> *(성능 그래프나 응답 시간 분포 차트 추가 가능)*
+> **TPS (Transactions Per Second)** 
+> ![nGrinder TPS](https://github.com/BlueCaf/CQueC/blob/main/images/nGrinder_TPS.png?raw=true)
+>
+> **MTT (Mean Test Time)** 
+> ![nGrinder MTT](https://github.com/BlueCaf/CQueC/blob/main/images/nGrinder_MTT.png?raw=true)
+> 
+> **MTTFB (Mean Test Time First Byte)** 
+> ![nGrinder MTTFB](https://github.com/BlueCaf/CQueC/blob/main/images/nGrinder_MTTFB.png?raw=true)
+> 
+> **Virtual Users**
+> ![nGrinder Virtual Users](https://github.com/BlueCaf/CQueC/blob/main/images/nGrinder_VUser.png?raw=true)
+> 
+> **Errors**
+> ![nGrinder Errors](https://github.com/BlueCaf/CQueC/blob/main/images/nGrinder_Errors.png?raw=true)
 
 ---
 
