@@ -61,7 +61,7 @@
 - **Auto Scaling** : 트래픽 폭주 대응
 - **Prometheus + Grafana** : 자원 모니터링링
 
-> ![Cloud Architecture Base](images/Cloud Architecture_Base.png)
+> ![Cloud Architecture Base](https://github.com/BlueCaf/CQueC/blob/main/images/Cloud_Architecture_Base.png?raw=true)
 
 ---
 
