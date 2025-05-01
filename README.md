@@ -22,7 +22,6 @@
 - **Framework**: Spring Boot 3.4.4
 - **Runtime**: JDK 21
 
-**이미지 예시:**
 > ![Application Flowchart](https://github.com/BlueCaf/CQueC/blob/main/images/Application_flowchart.png?raw=true)
 
 ---
