@@ -1,5 +1,7 @@
 # CQueC Queueing service
 
+![Logo](https://github.com/BlueCaf/CQueC/blob/main/images/CQueC_logo.png?raw=true)
+
 > 대규모 사용자 대기열 처리를 위한 고성능 Queueing 서비스
 
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0.0-blueviolet)](https://kotlinlang.org/)
@@ -15,7 +17,6 @@
 > ![Service Image](https://github.com/BlueCaf/CQueC/blob/main/images/CQueC_action.gif?raw=true)
 
 ## 📚 Tech Stack
-
 ### 🚀 Back-End
 - **Language**: Kotlin 2.0.0
 - **Framework**: Spring Boot 3.4.4
