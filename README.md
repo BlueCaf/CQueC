@@ -1,4 +1,4 @@
-# Queueing Service
+# CQueC Queueing service
 
 > 대규모 사용자 대기열 처리를 위한 고성능 Queueing 서비스
 
@@ -10,6 +10,9 @@
 [![Grafana](https://img.shields.io/badge/Grafana-Visualization-yellow)](https://grafana.com/)
 
 ---
+
+## 🧙 Service Image
+> ![Service Image](https://github.com/BlueCaf/CQueC/blob/main/images/CQueC_action.gif?raw=true)
 
 ## 📚 Tech Stack
 
