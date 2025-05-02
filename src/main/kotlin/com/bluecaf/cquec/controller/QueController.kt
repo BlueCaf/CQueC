@@ -3,6 +3,7 @@ package com.bluecaf.cquec.controller
 import com.bluecaf.cquec.dto.QueResponseDTO
 import com.bluecaf.cquec.service.CookieService
 import com.bluecaf.cquec.service.RedisService
+import com.bluecaf.cquec.util.IdUtil
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.web.bind.annotation.GetMapping
@@ -31,7 +32,7 @@ class QueController(
         val processedCount = redisService.getProcessedCount()
         if (queueSize == 0L && processedCount < 100L) {
             // 대기열 비어있으면 바로 처리
-            val id = cookieService.generateUUIDv7()
+            val id = IdUtil.generateUUIDv7()
             val cookie = cookieService.create(id)
             redisService.markAsProcessed(id)
             redisService.incrementProcessed()
@@ -39,7 +40,7 @@ class QueController(
             return QueResponseDTO(2004, "entered", null)
         }
 
-        val id = cookieService.generateUUIDv7()
+        val id = IdUtil.generateUUIDv7()
         val cookie = cookieService.create(id)
         redisService.enqueue(id)
         redisService.resetProcessedCount()
@@ -56,7 +57,7 @@ class QueController(
     fun waitTest() {
 
         repeat(50) {
-            val id = cookieService.generateUUIDv7()
+            val id = IdUtil.generateUUIDv7()
             redisService.enqueue(id)
         }
     }
